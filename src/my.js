@@ -74,10 +74,7 @@ function deleteProperty(obj, prop) {
     return obj;
 }
 
-var bomj = {
-    name : "Danil",
-    age: 28
-}
+
 
 //console.log(deleteProperty(bomj, "name"));
 
@@ -97,10 +94,31 @@ function hasProperty(obj, prop) {
  Задача 6:
  Функция должна получить все перечисляемые свойства объекта и вернуть их в виде массива
  */
-function getEnumProps(obj) {
-    if (obj.hasOwnProperty(prop)) {
+function getEnumProps2(obj, ...args) {
+    var names = args;
+    var result = [];
+    console.log(names);
 
+    for (let i=0; i < names.length ; i++) {
+        if (obj.hasOwnProperty(names[i])) {
+            console.log("Такое свойствой есть - " + obj[names[i]]);
+            result.push(obj[names[i]]);
+        }
+        else {
+            console.log("Такого свойства нет - " + obj[names[i]]);
+        }
     }
-    else {
-    }
+    return result;
+
 }
+function getEnumProps(obj) {
+    return Object.keys(obj)
+}
+var bomj = {
+    name : "Danil",
+    lastName : "Xr",
+    sureName : "Aldrovich",
+    age: 28
+}
+
+console.log(getEnumProps(bomj, "name", "superName", 11, "age", "lastName"));
