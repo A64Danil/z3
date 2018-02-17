@@ -70,4 +70,13 @@ function reduce(array, fn, initial) {
  Функция должна удалить указанное свойство из указанного объекта
  */
 function deleteProperty(obj, prop) {
+    delete obj[prop];
+    return obj;
 }
+
+var bomj = {
+    name : "Danil",
+    age: 28
+}
+
+console.log(deleteProperty(bomj, "name"));
