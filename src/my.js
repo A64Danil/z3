@@ -49,25 +49,25 @@ function sum(sum, val) {
 }
 
 function reduce(array, fn, initial) {
-
     var result = initial;
 
-    for (let i=0; i < array.length ; i++) {
-        if (i == 0 && !initial) {
-            console.log("не указан инитиал");
-            result = array[0];
-        }
-
-        result = fn(result, array[i], i, i, array);
-        // /newArr[i] = fn(array[i], i, array);
-
+    if (!initial) {
+        result = array[0];
+        i++
     }
-
+    for (let i=0; i < array.length ; i++) {
+        result = fn(result, array[i], i, i, array);
+    }
     return result;
-    // передаём массив
-    // для каждой ячейки выполняем функцию
-    // сохроняем результат в init
-    //
 }
 
-console.log(reduce(arr, sum));
+
+//console.log(reduce(arr, sum));
+
+/*
+ Задача 4:
+ Функция принимает объект и имя свойства, которое необходиом удалить из объекта
+ Функция должна удалить указанное свойство из указанного объекта
+ */
+function deleteProperty(obj, prop) {
+}

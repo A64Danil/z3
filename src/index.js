@@ -28,20 +28,21 @@ function map(array, fn) {
  Напишите аналог встроенного метода reduce для работы с массивами
  */
 function reduce(array, fn, initial) {
+
     var result = initial;
+    var i = 0;
 
-    for (var i=0; i < array.length ; i++) {
-        if (i == 0 && !initial) {
-            //console.log("не указан инитиал")
-            result = array[0];
-        }
+    if (!initial) {
+        result = array[0];
+        i++
+    }
+
+    for (i; i < array.length ; i++) {
         result = fn(result, array[i], i, array);
-
     }
 
     return result;
 }
-
 /*
  Задача 4:
  Функция принимает объект и имя свойства, которое необходиом удалить из объекта
