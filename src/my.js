@@ -79,4 +79,28 @@ var bomj = {
     age: 28
 }
 
-console.log(deleteProperty(bomj, "name"));
+//console.log(deleteProperty(bomj, "name"));
+
+
+/*
+ Задача 5:
+ Функция принимает объект и имя свойства и возвращает true или false
+ Функция должна проверить существует ли укзаанное свойство в указанном объекте
+ */
+function hasProperty(obj, prop) {
+    if (obj.hasOwnProperty(prop)) return true
+    else return false
+}
+//console.log(hasProperty(bomj, "name"));
+
+/*
+ Задача 6:
+ Функция должна получить все перечисляемые свойства объекта и вернуть их в виде массива
+ */
+function getEnumProps(obj) {
+    if (obj.hasOwnProperty(prop)) {
+
+    }
+    else {
+    }
+}

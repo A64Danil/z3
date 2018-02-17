@@ -59,6 +59,8 @@ function deleteProperty(obj, prop) {
  Функция должна проверить существует ли укзаанное свойство в указанном объекте
  */
 function hasProperty(obj, prop) {
+    if (obj.hasOwnProperty(prop)) return true
+    else return false
 }
 
 /*
