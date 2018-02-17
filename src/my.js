@@ -1,11 +1,11 @@
 console.log("NODE js working. Русские символы");
-
 var arr = [3,2,5];
-
+var names = ['HTML', 'CSS', 'JavaScript'];
 
 function conLog(val, index, array) {
     console.log(val + 2, "index: " + index, array);
 }
+
 
 /*
  Задача 1:
@@ -35,13 +35,39 @@ function map(array, fn) {
     return newArr;
 }
 
-map(arr, conLog);
+//map(arr, conLog);
 
-var names = ['HTML', 'CSS', 'JavaScript'];
+/*
+ Задача 3:
+ Напишите аналог встроенного метода reduce для работы с массивами
+ */
 
-var arr2 = arr.map(function(i) {
-    return i + 2;
-});
-//console.log(arr2);
-// получили массив с длинами
-//alert( nameLengths ); // 4,3,10
+function sum(sum, val) {
+    sum += val;
+    console.log(sum, "val: " + val);
+    return sum;
+}
+
+function reduce(array, fn, initial) {
+
+    var result = initial;
+
+    for (let i=0; i < array.length ; i++) {
+        if (i == 0 && !initial) {
+            console.log("не указан инитиал");
+            result = array[0];
+        }
+
+        result = fn(result, array[i], i, i, array);
+        // /newArr[i] = fn(array[i], i, array);
+
+    }
+
+    return result;
+    // передаём массив
+    // для каждой ячейки выполняем функцию
+    // сохроняем результат в init
+    //
+}
+
+console.log(reduce(arr, sum));

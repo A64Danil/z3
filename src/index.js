@@ -28,6 +28,18 @@ function map(array, fn) {
  Напишите аналог встроенного метода reduce для работы с массивами
  */
 function reduce(array, fn, initial) {
+    var result = initial;
+
+    for (var i=0; i < array.length ; i++) {
+        if (i == 0 && !initial) {
+            //console.log("не указан инитиал")
+            result = array[0];
+        }
+        result = fn(result, array[i], i, array);
+
+    }
+
+    return result;
 }
 
 /*
