@@ -1,6 +1,4 @@
 console.log("NODE js working. Русские символы");
-var arr = [3,2,5];
-var names = ['HTML', 'CSS', 'JavaScript'];
 
 function conLog(val, index, array) {
     console.log(val + 2, "index: " + index, array);
@@ -135,4 +133,60 @@ var bomj = {
     age: 28
 }
 
-console.log(upperProps(bomj));
+var arr = [1,2,3,6,5,4,7,8,9];
+var names = ['HTML', 'CSS', 'JavaScript'];
+
+
+/*
+ Задача 8 *:
+ Напишите аналог встроенного метода slice для работы с массивами
+ */
+function slice(array, from, to) {
+    var newArr = [];
+    var newArrIndex = 0;
+
+    if (!from) from = 0;
+    if (!to) to = array.length;
+
+    if (from < 0) from = array.length + from;
+    if (to < 0) to = array.length + to;
+
+    for (i = from; i < to; i++) {
+        newArr[newArrIndex] = array[i];
+        newArrIndex++;
+        //console.log("i: " + i + ", newArrIndex: " +newArrIndex + ", array[i]: " + array[i])
+    }
+
+    return newArr;
+}
+
+var myTarget = arr.slice(-6,-2);
+var myResult = slice(arr, -6, -2);
+
+Array.prototype.equals = function (array, strict) {
+    if (!array)
+        return false;
+
+    if (arguments.length == 1)
+        strict = true;
+
+    if (this.length != array.length)
+        return false;
+
+    for (var i = 0; i < this.length; i++) {
+        if (this[i] instanceof Array && array[i] instanceof Array) {
+            if (!this[i].equals(array[i], strict))
+                return false;
+        }
+        else if (strict && this[i] != array[i]) {
+            return false;
+        }
+        else if (!strict) {
+            return this.sort().equals(array.sort(), true);
+        }
+    }
+    return true;
+}
+
+console.log(myTarget.equals(myResult));
+console.log();
