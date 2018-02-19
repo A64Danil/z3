@@ -192,6 +192,11 @@ var bomj = {
     sureName : "Aldrovich",
     age: 28
 }
+
+var bomjik = {
+    name : "Danilka",
+    age: 10
+}
 /*
  Задача 9 *:
  Функция принимает объект и должна вернуть Proxy для этого объекта
@@ -201,21 +206,17 @@ function createProxy(obj) {
     let user = obj;
 
     let proxy = new Proxy(user, {
-        get(target, prop) {
-        console.log("Чтение ${prop}");
-        return target[prop];
-    },
-    set(target, prop, value) {
-        console.log("Запись " + prop + ", " + value);
-        target[prop] = value;
+        set(target, prop, value) {
+        console.log("Попытка записи в " + prop + ", передаваемое значение " + value + ", старое значение " +  user[prop]);
+        target[prop] = value * value;
         return true;
     }
     });
 
-
-    proxy.name = "Daka";
-
     return proxy;
 }
 
-createProxy(bomj);
+createProxy(bomjik);
+//bomjik.age = 5;
+console.log("Возраст бомжа " + bomjik.age);
+
