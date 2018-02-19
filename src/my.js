@@ -126,12 +126,7 @@ function upperProps(obj) {
    return names;
 }
 
-var bomj = {
-    name : "Danil",
-    lastName : "Xr",
-    sureName : "Aldrovich",
-    age: 28
-}
+
 
 var arr = [1,2,3,6,5,4,7,8,9];
 var names = ['HTML', 'CSS', 'JavaScript'];
@@ -188,5 +183,39 @@ Array.prototype.equals = function (array, strict) {
     return true;
 }
 
-console.log(myTarget.equals(myResult));
-console.log();
+//console.log(myTarget.equals(myResult));
+//console.log();
+
+var bomj = {
+    name : "Danil",
+    lastName : "Xr",
+    sureName : "Aldrovich",
+    age: 28
+}
+/*
+ Задача 9 *:
+ Функция принимает объект и должна вернуть Proxy для этого объекта
+ Proxy должен перехватывать все попытки записи значений свойств и возводить это значение в квадрат
+ */
+function createProxy(obj) {
+    let user = obj;
+
+    let proxy = new Proxy(user, {
+        get(target, prop) {
+        console.log("Чтение ${prop}");
+        return target[prop];
+    },
+    set(target, prop, value) {
+        console.log("Запись " + prop + ", " + value);
+        target[prop] = value;
+        return true;
+    }
+    });
+
+
+    proxy.name = "Daka";
+
+    return proxy;
+}
+
+createProxy(bomj);
